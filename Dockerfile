@@ -29,7 +29,7 @@ RUN sudo mkdir /usr/local/php7
 RUN git clone https://github.com/php/php-src.git
 RUN cd php-src &&  git checkout PHP-7.0.0 &&  git pull &&  ./buildconf --force
 
-RUN cd php-src && ./configure "--prefix=/usr/local/php7 \
+RUN cd php-src && ./configure --prefix=/usr/local/php7 \
                   --with-config-file-scan-dir=/usr/local/php7/etc/conf.d \
                   --enable-bcmath \
                   --with-bz2 \
@@ -65,7 +65,7 @@ RUN cd php-src && ./configure "--prefix=/usr/local/php7 \
                   --with-curl \
                   --enable-fpm \
                   --with-fpm-user=www-data \
-                  --with-fpm-group=www-data"
+                  --with-fpm-group=www-data
 
 RUN cd php-src && make
 RUN cd php-src && make install
